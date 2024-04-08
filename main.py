@@ -67,26 +67,13 @@ def convert_ips(input_urls, output_files):
                     open_ports = scan_ports(ip)
 
                     if location:
-                        f.write(f"{ip}:{open_ports[0]}#{flag} {location}\n")
+                        f.write(f"{ip}:{open_ports[0]}#{location}\n")
                     else:
                         f.write(f"{ip}:443#火星⭐\n")
                 except socket.error:
                     f.write(f"{line}\n")
                     continue
-def get_flag(country_code):
-    # You can implement a function to get flags based on country codes
-    # For example, you can have a dictionary mapping country codes to flag emojis
-    # Here is a simple example:
-    flags = {
-        'US': '🇺🇸',
-        'CN': '🇨🇳',
-        'JP': '🇯🇵',
-        'HK': '🇭🇰',
-        'SG': '🇸🇬',
-        'KR': '🇰🇷',
-        'TW': '🇼🇸',
-    }
-    return flags.get(country_code, '🏳️')
+
 if __name__ == "__main__":
     input_urls = ["https://ipdb.api.030101.xyz/?type=bestproxy", "https://ipdb.api.030101.xyz/?type=bestcf", 'https://raw.githubusercontent.com/China-xb/zidonghuaip/main/ip.txt', 'https://addressesapi.090227.xyz/CloudFlareYes' , 'https://kzip.pages.dev/a.csv?token=mimausb8' , 'https://cfno1.pages.dev/pure']  # 包含IP地址的txt文件的多个URL
     output_files = "ip.txt"
