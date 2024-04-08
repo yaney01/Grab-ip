@@ -54,11 +54,11 @@ def scan_ports(ip):
         open_ports.append(443)
     return open_ports
 
-def convert_ips(input_urls, output_file):
-    with open(output_file, 'w') as f:
-        for input_url in input_urls:
-            ips = get_ips_from_url(input_url)
+def convert_ips(input_urls, output_files):
+    for input_url, output_file in zip(input_urls, output_files):
+        ips = get_ips_from_url(input_url)
 
+        with open(output_file, 'w') as f:
             for line in ips:
                 ip = line.split()[0]
                 try:
@@ -75,13 +75,6 @@ def convert_ips(input_urls, output_file):
                     continue
 
 if __name__ == "__main__":
-    input_urls = [
-        "https://ipdb.api.030101.xyz/?type=bestproxy",
-        "https://ipdb.api.030101.xyz/?type=bestcf",
-        'https://raw.githubusercontent.com/China-xb/zidonghuaip/main/ip.txt',
-        'https://addressesapi.090227.xyz/CloudFlareYes',
-        'https://kzip.pages.dev/a.csv?token=mimausb8',
-        'https://cfno1.pages.dev/pure'
-    ]
-    output_file = 'ip.txt'  # 输出文件名
-    convert_ips(input_urls, output_file)
+    input_urls = ["https://ipdb.api.030101.xyz/?type=bestproxy", "https://ipdb.api.030101.xyz/?type=bestcf", 'https://raw.githubusercontent.com/China-xb/zidonghuaip/main/ip.txt', 'https://addressesapi.090227.xyz/CloudFlareYes' , 'https://kzip.pages.dev/a.csv?token=mimausb8', 'https://cfno1.pages.dev/pure']  # 包含IP地址的txt文件的多个URL
+    output_files = ["bestproxy.txt", "bestcf.txt", 'ip.txt', 'cfip.txt', 'kzip.txt', 'cfno1']
+    convert_ips(input_urls, output_files)
