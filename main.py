@@ -85,6 +85,8 @@ def get_flag(country_code):
         'SG': '🇸🇬',
         'KR': '🇰🇷',
         'TW': '🇼🇸',
+    }
+    return flags.get(country_code, '🏳️')
 if __name__ == "__main__":
     input_urls = ["https://ipdb.api.030101.xyz/?type=bestproxy", "https://ipdb.api.030101.xyz/?type=bestcf", 'https://raw.githubusercontent.com/China-xb/zidonghuaip/main/ip.txt', 'https://addressesapi.090227.xyz/CloudFlareYes' , 'https://kzip.pages.dev/a.csv?token=mimausb8' , 'https://cfno1.pages.dev/pure']  # 包含IP地址的txt文件的多个URL
     output_files = "ip.txt"
